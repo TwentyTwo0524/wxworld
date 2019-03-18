@@ -1,0 +1,33 @@
+.content{width: 960px;margin: 0 auto;padding-top: 10px;}
+.cart_none{height: 300px;margin: 10px 0px;border: 1px solid #CCCCCC;background: white;}
+.cart_none_user{width: 350px;background: url(../img/big_bag.png)no-repeat;height: 100px;padding-left: 90px;margin: 100px auto 0;}
+.cart_none_user h3{line-height: 100px;}
+.cart_success{display: none;}
+
+/*添加商品后*/
+em{;background: url(../img/true.png)0px -40px no-repeat;width: 16px;height: 16px;position: absolute;left: 25px;top: 12px;}
+.orderTips{background: #f4fff3;border: 1px solid #8cbe7c;position: relative;margin-top: 10px;}
+.orderTips_m{padding: 10px 0 10px 50px;}
+.orderTips_m span{font: 12px 微软雅黑,Helvetica,sans-serif;line-height: 1.5;color: #6c6c6c;}
+th{background-color: #eee;line-height: 40px;height: 40px;font-weight: normal;}
+table{text-align: center;border-collapse: collapse;border-spacing: 0;font: 12px 微软雅黑,Helvetica,sans-serif;}
+table a{text-decoration: none;color: #7A7A7A;cursor: pointer;}
+table a:hover{color: #8E0C3A;}
+table td{color: #7A7A7A;padding: 15px 0;border-bottom: 1px solid #EEEEEE;}
+.cart_pro{}
+.sub,.add{width: 20px;}
+.num{display: inline-block;border: 1px solid #7A7A7A;widrh: 20px;width: 20px;height: 15px;}
+.cart_price{padding: 10px 0;overflow: hidden; width: 236px;margin-left: 722px;margin-top: 10px;}
+.cart_price p{width: 120px;font: 12px 微软雅黑,Helvetica,sans-serif;padding: 5px 0;line-height: 1.5;float: left;padding-right: 20px;}
+.cart_price span{font-weight: bold;color: #8E0C3A;font: 18px 微软雅黑,Helvetica,sans-serif;display: block;float: left;}
+.pay button{background: url(../img/balance.gif)no-repeat;width: 156px;height: 46px;border: none;margin-left: 800px;cursor: pointer;}
+.cart_success{display: none;}
+/*支付页面*/
+.all{opacity: 0.5;z-index: 99;position: absolute;background: black;width: 100%;height: 100%;display: none;top:0px;}
+.pay_success{width: 400px;height: 300px;background: white;border: 2px #8E0C3A solid;display: none;position: absolute;z-index:100 ;top:35%;left: 40%;}
+.pay_true{background: url(../img/true.png) -40px 0px no-repeat;width:138px;height: 40px;padding-left: 60px;margin-left: 100px;margin-top: 88px;}
+.pay_success p{font: 20px 微软雅黑,Helvetica,sans-serif;color: #8E0C3A;line-height: 40px;}
+.true,.false{border: none;background:#8CBE7C;color: #8E0C3A;width: 100px;height: 30px;line-height: 30px;text-align: center;margin-top: 55px;margin-left: 65px;}
+.success{display: none;width: 300px;height: 150px;background: #F4FFF3;text-align: center;padding-top: 100px;font: 22px 微软雅黑,Helvetica,sans-serif;color: black;position: absolute;top: 30%;left: 45%;z-index: 102;}
+.back{font: 12px 微软雅黑,Helvetica,sans-serif;color: #8E0C3A;cursor: pointer;width: 100px;margin-left: 100px;margin-top: 10px;}
+.back:hover{border-bottom: 1px solid #8E0C3A;}

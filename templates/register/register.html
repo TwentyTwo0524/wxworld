@@ -1,0 +1,160 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="{% static 'register/css/shouwei.css' %}" type="text/css">
+		<link rel="stylesheet" href="{% static 'register/css/register.css' %}" type="text/css">
+		<script src="{% static 'register/js/jquery-1.12.3.js' %}"></script>
+		<script src="{% static 'register/js/headerbar.js' %}"></script>
+		<script src="{% static 'register/js/register.js' %}"></script>
+		<script src="{% static 'register/js/jquery.cookie.js' %}"></script>
+		<script src="{% static 'register/js/goods_info.js' %}"></script>
+		<script src="{% static 'register/js/goods_info2.js' %}"></script>
+	</head>
+	<body>
+
+		<div class="header">
+			<div class="headerbar">
+				<div class="hb_content">
+					<div class="hb_con_left">
+						<a href="{% url 'mxw:register' %}" class="register">
+                            {{ user.name | default:'注册' }}
+                        </a>
+						<a href="{% url 'mxw:login' %}" class="login">登录</a>
+						<a href="{% url 'mxw:cart' %}">订单查询</a>
+					</div>
+					<div class="hb_con_right">
+						<p>客服热线:4000-250-630</p>
+						<div class="follow">
+							<img src="{% static 'register/img/star.png'%}">
+							<span>关注我们</span>
+							<div class="share">
+								<a href="" class="sina">
+									<img src="{% static 'register/img/fou_sina.gif'%}">
+									<span>新浪微博</span>
+								</a>
+								<a href="" class="weixin">
+									<img src="{% static 'register/img/fou_wechat.gif'%}">
+									<span>美西微信</span>
+								</a>
+							</div>
+						</div>
+						<div class="bag">
+							<a href="{% url 'mxw:cart' %}">
+								<div class="bag_n">
+								<img src="{% static 'register/img/shopping.png'%}" class="bag_icon">
+								<span>购物袋（<t style="color: #8E0C3A;">0</t>）</span>
+								<img class="arrow" src="{% static 'register/img/xiabiao.png'%}">
+							</div>
+							</a>
+
+
+							<div class="cart">
+								<div class="cart_n">
+									您的购物车是空的
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="header_top">
+				<div class="meiciapp">
+					<a href=""><img src="{% static 'register/img/ewm_indexTop.png'%}"></a>
+					<span><img src="{% static 'register/img/ewm_txt.png'%}"></span>
+				</div>
+				<div class="logo">
+					<img src="{% static 'register/img/logo_new.png'%}">
+				</div>
+				<div class="search">
+					<input type="text" placeholder="请输入您的关键词" maxlength="20">
+					<img src="{% static 'register/img/search.png'%}">
+				</div>
+			</div>
+		</div>
+		<div class="content">
+			<div class="content_box">
+				<div class="absolute">
+					<img src="{% static 'register/img/register_bg.png'%}">
+				</div>
+				<p class="voucher">手机验证完成即送<b>100</b>元代金券</p>
+				<form class="registerform" method="post">
+                    {% csrf_token %}
+
+					<div class="register_box">
+						<div class="input_zone">
+							<div class="input_l"><i>邮箱：</i></div>
+							<div class="input_r">
+								<input type="text" id="user_email" name="email">
+							</div>
+						</div>
+                        <div class="input_zone">
+							<div class="input_l"><i>用户名：</i></div>
+							<div class="input_r">
+								<input type="text" id="user_name" name="name">
+							</div>
+						</div>
+						<div class="input_zone">
+							<div class="input_l"><i>密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码：</i></div>
+							<div class="input_r">
+								<input type="password" id="psw1" name="password">
+							</div>
+						</div>
+						<div class="input_zone">
+							<div class="input_l"><i>确认 密码：</i></div>
+							<div class="input_r">
+								<input type="password" id="psw2">
+							</div>
+						</div>
+						<div class="meici_tag">
+							<input class="input_small_l" type="checkbox" value="1">
+							<span style="color: #6C6C6C;display: inline-block;">订阅美西时尚资讯</span>
+						</div>
+						<div class="meici_tag">
+							<button class="btn_register">注册</button>
+							<br>
+							<div style="margin-top: 5px;text-align: right;">
+								已注册？
+								<a href="{% url 'mxw:login' %}" style="color: #8E0C3A;">登录</a>
+							</div>
+							<p class="regInfo_msg"></p>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="footer">
+			<div class="sub_nav">
+				<ul class="clearfix">
+					<li><a href="{% url 'mxw:home' %}">首页</a></li>
+					<li><a href="">关于美西</a></li>
+					<li><a href="">媒体报道</a></li>
+					<li><a href="">正品保障</a></li>
+					<li><a href="">业务合作</a></li>
+					<li><a href="">隐私声明</a></li>
+					<li><a href="">加入美西</a></li>
+					<li><a href="">网站地图</a></li>
+					<li><a href="">联系我们</a></li>
+				</ul>
+			</div>
+			<div class="copyright">
+				<p>
+					Copyright © 2008-2016 美西时尚-
+					<a href="">高端时尚生活电商</a>
+				</p>
+				<p>
+					<a href="">
+						沪ICP备09001221号
+					</a>
+				</p>
+			</div>
+			<div class="safe">
+				<a href=""><img src="{% static 'register/img/hy_83x30.png'%}"></a>
+				<a href=""><img src="{% static 'register/img/ssgs.gif'%}"></a>
+			</div>
+		</div>
+    </body>
+</html>

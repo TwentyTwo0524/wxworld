@@ -1,0 +1,32 @@
+/*body{font: 12px 微软雅黑,Helvetica,sans-serif;line-height: 1.5;color: #6C6C6C;}*/
+.content{width: 960px;margin: 0 auto;padding-top: 10px;overflow: hidden;}
+.goods_info{overflow: hidden;}
+.pro_l{width: 550px;float: left;}
+.pro_img_list{float: left;}
+.goods_list{width: 52px;height: 420px;padding: 20px 25px;list-style: none;}
+.goods_list li{border: 1px solid white;}
+.list_edit{margin-top:7px ;height: 62px;cursor: pointer;}
+.list_edit img{border: 1px solid white;}
+.pro_img{position: relative;margin-left: 20px; width: 384px;float: left;background: url(../img/showImg1.jpg)no-repeat;}
+.border{border: 1px solid #ccc;}
+
+/*放大镜*/
+.bigArea{width: 390px;height: 460px;position: absolute;overflow: hidden;display: none;top: 0px;left: 448px;z-index: 11;}
+.bigImg{width: 800px;height: 960px;position: absolute;}
+.smallArea{width: 183px;height: 218px;position: absolute;display:none;background: white;opacity: 0.5;border: 1px solid #eee;cursor: pointer;}
+
+
+
+/*品牌以及商品标题*/
+.pro_r{width: 390px;padding-top: 20px;float: right;}
+.relative{font-size: 14px;font-weight: normal;position: relative;font-family: 微软雅黑,Helvetica,sans-serif;}
+.relative a{font-size: 16px;font-weight: bold;color: #333;text-decoration: none;line-height: 1.5}
+.position_rel{position: relative;}
+.pro_price{padding: 10px 0 40px;}
+.c_gray_2{color: #bbb;font:12px 微软雅黑,Helvetica,sans-serif;line-height: 1.5;}
+.c_purple{color: #8E0C3A;font:12px 微软雅黑,Helvetica,sans-serif;line-height: 1.5;}
+p{font:12px 微软雅黑,Helvetica,sans-serif;line-height: 1.5;}
+.pro_btn{padding: 10px 0;}
+.buy,.bags{cursor: pointer;}
+
+.pro_con{margin: 15px 0;border-top: 1px solid #eee;border-bottom: 1px solid #eee;height: 39px;}

@@ -1,0 +1,17 @@
+body{font: 12px 微软雅黑,Helvetica,sans-serif;}
+.content{width: 960px;margin: 0 auto;padding-top: 20px;}
+.content_box{height: 517px;background: url(../img/bg_main.jpg) no-repeat center;position: relative;}
+.absolute{position:absolute;top: 27px;left: 66px;}
+.voucher{width: 300px;font-size: 17px;color: #8e0c3a;position: absolute;top: 168px;left: 203px;}
+.registerform{display: block;}
+.register_box{padding: 220px 0 0 104px;}
+.input_zone{height: 40px;}
+.input_l{width: 72px;margin-top: 1px;float: left;font-family: "微软雅黑";display: inline;color: #666;}
+.input_l i{font-style:normal;font: 12px 微软雅黑,Helvetica,sans-serif;}
+.input_r{float: left;display: inline;width: 204px;height: 22px;}
+.input_r input{vertical-align: middle;width: 200px;height: 20px;padding: 0 0 0 2px;border: 1px solid black;}
+.meici_tag{margin-left: 72px;margin-bottom: 20px;width: 205px;}
+.input_small_l{ margin: 1px 5px 0 0;float: left;}
+.btn_login{width: 204px; height: 30px;border: none;background: #8E0C3A;color: white;font-size: 13px;}
+.regInfo_msg{width: 204px;height: 10px;color: #8E0C3A;}
+.float_r{display: block;float: right;width: 60px;}

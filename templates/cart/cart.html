@@ -1,0 +1,303 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="{% static 'cart/css/shouwei.css' %}" type="text/css">
+		<link rel="stylesheet" href="{% static 'cart/css/cart.css' %}" type="text/css">
+		<script src="{% static 'cart/js/jquery-1.12.3.js' %}"></script>
+		<script src="{% static 'cart/js/jquery.cookie.js' %}"></script>
+		<script src="{% static 'cart/js/headerbar.js' %}"></script>
+	</head>
+	<body>
+		<div class="header">
+			<div class="headerbar">
+				<div class="hb_content">
+					<div class="hb_con_left">
+						<a href="{% url 'mxw:register' %}" class="register">注册</a>
+						<a href="{% url 'mxw:login' %}" class="login">登录</a>
+						<a href="">订单查询</a>
+					</div>
+					<div class="hb_con_right" style="width: 222px;">
+						<p>客服热线：4000-250-630</p>
+						<div class="follow">
+							<img src="{% static 'cart/img/star.png' %}">
+							<span>关注我们</span>
+							<div class="share">
+								<a href="" class="sina">
+									<img src="{% static 'cart/img/fou_sina.gif' %}">
+									<span>新浪微博</span>
+								</a>
+								<a href="" class="weixin">
+									<img src="{% static 'cart/img/fou_wechat.gif' %}">
+									<span>美西微信</span>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="header_top">
+				<div class="meiciapp">
+					<a href=""><img src="{% static 'cart/img/ewm_indexTop.png' %}"/></a>
+					<span><img src="{% static 'cart/img/ewm_txt.png' %}"/></span>
+				</div>
+				<div class="logo">
+					<img src="{% static 'cart/img/logo_new.png' %}" />
+				</div>
+			</div>
+		</div>
+		
+		<div class="content">
+			<div class="cart_img">
+				<img src="{% static 'cart/img/cart_sub.gif' %}">
+			</div>
+			<div class='cart_success'>
+				<div class='orderTips'>
+					<em></em>
+					<div class='orderTips_m'>
+						<span class="goods_success"></span>
+					</div>
+				</div>
+				<div class='cart_pro'>
+					<table width='100%'>
+						<tr><th>商品图片</th><th>商品名称</th><th>数量</th><th>单价</th><th>操作</th></tr>
+					</table>
+				</div>
+				<div class='cart_price'>
+					<p>总计（不含运费）：</p>
+					<span class='pay_goods' ></span>
+				</div>
+				<div class='pay'>
+					<button></button>
+				</div>
+			</div>
+			<div class="cart_none">
+				<div class="cart_none_user">
+					<h3>购物车内暂时没有商品,赶紧去购物吧</h3>
+				</div>
+			</div>
+		</div>
+		
+		<script type="text/javascript">
+			
+			function refreshCart() {
+				
+				$(".goods_tr").remove()
+				
+				var goodslist = $.cookie("cart");
+				if(goodslist){
+					goodslist=JSON.parse($.cookie("cart"))
+					var priceArr=[];
+					for(var i=0;i<goodslist.length;i++){
+						
+						var obj=goodslist[i];				
+						var price=JSON.parse(obj.price)*obj.num;					
+						priceArr.push(price)
+//						console.log(priceArr)
+						var priceSum=0;
+						for(var j=0;j<priceArr.length;j++){
+							
+							priceSum+=priceArr[j];
+						}
+//						console.log(priceSum)
+						$(".pay_goods").html("￥"+priceSum)
+						$(".cart_none").remove()
+						$(".cart_success").show();
+						$(".goods_success").html("成功加入 "+obj.name+" 商品到购物车")
+						var tbody=$("<tr class='goods_tr'></tr>")
+						var t_img=$("<td class='t_img'><a href=''><img id="+ i +" src="+obj.img+"></a></td>")
+						var t_name=$("<td class='cart_pro_name'><a href=''>"+obj.name+"</a></td>")
+						var t_num=$("<td><button class='sub'>-</button><span class='num'>"+obj.num+"</span><button class='add'>+</button></td>")
+						var t_price=$("<td>￥"+obj.price+"</td>")
+						var t_delet=$("<td class='delet_td'><a>移至收藏</a><br/><a class='delet_goods'>删除商品</a></td>")
+						tbody.append(t_img,t_name,t_num,t_price,t_delet)
+						$("table").append(tbody)
+					
+					
+					}
+				}
+			}
+		
+			$(function(){
+				
+					
+				refreshCart()
+				
+				
+				$(".content").on("click",".sub", function(){
+					
+					goodslist_sub=JSON.parse($.cookie("cart"))
+					
+					for(var i=0;i<goodslist_sub.length;i++){
+						var obj=goodslist_sub[i];
+
+							if($(this).parent().siblings(".cart_pro_name").find("a").html()==obj.name){
+							if(obj.num>1){
+								obj.num--;
+							}
+							}
+					
+					}
+					$.cookie("cart",JSON.stringify(goodslist_sub),{expires:10,path:"/"})
+					refreshCart();
+					console.log($.cookie("cart"))
+				})
+				
+				$(".content").on("click",".add",function(){
+					goodslist_add=JSON.parse($.cookie("cart"))
+					for(var i=0;i<goodslist_add.length;i++){
+						var obj=goodslist_add[i];
+//						console.log(obj)
+						
+						if($(this).parent().siblings(".cart_pro_name").find("a").html()==obj.name){
+							obj.num++;
+							if(obj.num>99){
+								obj.num=99
+								alert("库存不足")
+							}
+						}
+					}
+					$.cookie("cart",JSON.stringify(goodslist_add),{expires:10,path:"/"})
+					refreshCart();
+				})
+				
+				$(".content").on("click",".delet_goods",function(){
+					goodslist_delet=JSON.parse($.cookie("cart"))
+//					console.log(goodslist_delet.length)
+					for(var i=0;i<goodslist_delet.length;i++){
+//						goodslist_delet[i].index=i;
+//						console.log(i)
+						var obj=goodslist_delet[i];			
+						if($(this).parent().siblings(".t_img").find("img").attr("id")==(obj.id-1)){								
+							goodslist_delet.splice($(this).parent().siblings(".t_img").find("img").attr("id"),1);
+							console.log(obj.id-1)
+							console.log($(this).parent().siblings(".t_img").find("img").attr("id"))
+							console.log(goodslist_delet)
+						}
+						else{
+							goodslist_delet.splice(($(this).parent().siblings(".t_img").find("img").attr("id"))-1,1);
+						}
+					}
+					$.cookie("cart",JSON.stringify(goodslist_delet),{expires:10,path:"/"})
+					window.location.reload()
+					console.log(JSON.parse($.cookie("cart")))
+				})
+				
+				
+				$(".content").on("click",".pay button",function(){
+					$(".all").show()
+					$(".pay_success").show()
+				})
+				$(".true").click(function(){
+					$(".success").show()
+					$(".pay_success").hide()
+				})
+				$(".false").click(function(){
+					$(".all").hide()
+					$(".pay_success").hide()
+				})
+				$(".back").click(function(){
+					$(".all").hide()
+					$(".success").hide();
+					$.cookie("cart",null,{expires:0,path:"/"})
+					$(".cart_success").remove()
+					window.location.reload(true);
+				})
+
+			})
+		</script>
+		<div class="all"></div>
+		<div class="success">
+			支付成功!
+			<p class="back">返回购物车<< </p>
+		</div>
+		<div class="pay_success">
+			<div class="pay_true">
+				<p>您要结算吗?</p>
+			</div>
+			<button class="true">确定</button>
+			<button class="false">取消</button>
+		</div>
+		<div class="footer">
+			<div class="help">
+				<ul>
+					<li class="help_title">购物指南</li>
+					<li><a href="">购物流程</a></li>
+					<li><a href="">配送方式</a></li>
+				</ul>
+				<ul>
+					<li class="help_title">支付方式</li>
+					<li><a href="">如何付款</a></li>
+					<li><a href="">发票制度</a></li>
+				</ul>
+				<ul>
+					<li class="help_title">商品说明</li>
+					<li><a href="">商品尺码</a></li>
+					<li><a href="">商品包装</a></li>
+				</ul>
+				<ul>
+					<li class="help_title">客服中心</li>
+					<li><a href="">七天退还</a></li>
+					<li><a href="">常见问题</a></li>
+				</ul>
+				<ul class="help_mid">
+					<li style="padding-top: 13px;line-height: 26px;">
+						<h5>订购热线</h5>
+						<br/>
+						<h4>4000-250-630</h4>
+					</li>
+				</ul>
+				<ul class="help_mid" style="width: 145px;">
+					<li style="padding-top: 13px;">
+						<span>在线客服</span>
+						<div class="tel">
+							<a href=""><img src="{% static 'cart/img/tencent.png' %}"></a>
+							<a href=""><img src="{% static 'cart/img/erji.png' %}"></a>
+						</div>
+					</li>
+				</ul>
+				<ul class="help_mid" style="width: 190px;">
+					<li class="scan">
+						<p>美西时尚APP</p>
+						<img src="{% static 'cart/img/ewm_indexTop.png' %}">
+					</li>
+					<li class="scan" style="width: 72px;">
+						<p>关注我们</p>
+						<img src="{% static 'cart/img/ewm_wx.png' %}" style="margin: 0;">
+					</li>
+				</ul>
+			</div>
+			<div class="sub_nav">
+				<ul class="clearfix">
+					<li><a href="{% url 'mxw:home' %}" class="clearfix_a">首页</a></li>
+					<li><a href="" class="clearfix_a">关于美西</a></li>
+					<li><a href="" class="clearfix_a">媒体报道</a></li>
+					<li><a href="" class="clearfix_a">正品保障</a></li>
+					<li><a href="" class="clearfix_a">业务合作</a></li>
+					<li><a href="" class="clearfix_a">隐私声明</a></li>
+					<li><a href="" class="clearfix_a">加入美西</a></li>
+					<li><a href="" class="clearfix_a">网站地图</a></li>
+					<li><a href="" class="clearfix_a">联系我们</a></li>
+				</ul>
+			</div>
+			<div class="copyright">
+				<p>
+					Copyright © 2008-2016 美西时尚-
+					<a href="">高端时尚生活电商</a>
+				</p>
+				<p>
+					<a href="">
+						沪ICP备09001221号
+					</a>
+				</p>
+			</div>
+			<div class="safe">
+				<a href=""><img src="{% static 'cart/img/hy_83x30.png' %}"></a>
+				<a href=""><img src="{% static 'cart/img/ssgs.gif' %}"></a>
+			</div>
+		</div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+[
+	{
+		"id":1,
+		"img":"../img/bag1.jpg"
+		},
+	{
+		"id":2,
+		"img":"../img/bag2.jpg"
+	},
+	{
+		"id":3,
+		"img":"../img/bag3.jpg"
+		},
+	{
+		"id":4,
+		"img":"../img/bag4.jpg"
+		},
+	{
+		"id":5,
+		"img":"../img/bag5.jpg"
+		}
+]
